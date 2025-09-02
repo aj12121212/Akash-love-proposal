@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Love Proposal</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #ffd6e8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      overflow: hidden;
+      margin: 0;
+    }
+
+    .container, .celebration, .letter-section {
+      width: 100%;
+      height: 100vh;
+      display: none;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* 🔥 Common Box Style (सब पर लागू होगा) */
+    .box {
+      background: #fff;
+      padding: 40px;
+      border-radius: 25px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+      width: 337px;
+      max-width: 95%;
+      position: relative;
+      z-index: 20;
+      text-align: center;
+      margin: auto;
+    }
+
+    /* Proposal Page */
+    .container img { width: 180px; margin-bottom: 25px; }
+    h2 {
+      margin-bottom: 15px;
+      font-size: 30px;
+
+      //animation: pulse 5.5s infinite;
+
+      color: #d6336c;
+    }
+    #sub {
+      font-size: 18px;
+      margin-bottom: 20px;
+      color: #555;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.2s;
+      position: relative;
+    }
+    .yes { background: #ff4d6d; color: #fff; }
+    .no  { background: #ccc; }
+
+    /* Celebration */
+    .celebration {
+      flex-direction: column;
+      background: linear-gradient(#ffedf2, #fff7fb);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .celebration .content {
+      composes: box;
+    }
+
+    .celebration img.love-img { width: 150px; margin-bottom: 8px; }
+    .celebration h1 { color: #ff4d6d; margin: 6px 0 18px; }
+
+    /* Letter Section */
+    .letter-section {
+      background: linear-gradient(120deg, #ffdde1, #ee9ca7);
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    .letter-box {
+        background: #fff;
+        padding: 40px;
+        border-radius: 25px;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+        width: 320px;       /* letter बड़ा रखने के लिए */
+        max-width: 95%;
+        margin: auto;
+        text-align: center;
+        animation: fadeIn 1.2s ease-in-out;
+    }
+     
+    .letter-box {
+        position: relative;
+        top: 45px;
+        margin-bottom: 90px; 
+   }
+
+    .letter-box h2 {
+      text-align: center;
+      color: #d6336c;
+      margin-bottom: 20px;
+      font-size: 28px;
+    }
+
+    .letter-box p {
+      line-height: 1.8;
+      font-size: 17px;
+      color: #333;
+      white-space: pre-line;
+    }
+
+    .heart-decor {
+      position: absolute;
+      top: -20px;
+      right: -20px;
+      font-size: 40px;
+      color: #ff4d6d;
+      animation: pulse 1.5s infinite;
+    }
+
+    .signature {
+      margin-top: 25px;
+      text-align: right;
+      font-weight: bold;
+      color: #0d6efd;
+      font-size: 18px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(1.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
+    /* Balloons */
+    .balloon {
+      position: absolute;
+      bottom: -160px;
+      width: 60px;
+      height: 80px;
+      border-radius: 50%;
+      animation: floatUp linear forwards;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.02);
+    }
+    .balloon::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -38px;
+      width: 2px;
+      height: 40px;
+      background: #555;
+      transform: translateX(-50%);
+    }
+
+    .heart {
+      position: absolute;
+      bottom: -120px;
+      width: 150px;
+      height: 150px;
+      animation: floatUp linear forwards;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 12;
+    }
+
+
+    .heart svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .heart text {
+      font-size: 15px;
+      font-weight: bold;
+      fill: #fff;
+      height: 80;
+      text-anchor: middle;
+      dominant-baseline: middle;
+    }
+
+    @keyframes floatUp {
+      0%   { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-120vh) scale(1.15); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Proposal Page -->
+ 
+  <div class="container" id="container">
+    <div class="box">
+      <img id="stepImg" src="001.gif" alt="cute">
+      <h2 id="question">Do you love me? 🥰</h2>
+      <p id="sub">I am all yours</p>
+      <div>
+        <button class="yes" onclick="sayYes()">Yes</button>
+        <button class="no" id="noBtn" onclick="sayNo()">No</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Celebration Page -->
+  <div class="celebration" id="celebration">
+    <div class="box content">
+      <img src="4.gif" alt="I love you so much baby" class="love-img">
+      <h1>💕 I knew it! You love me too 💕</h1>    
+      <button class="yes" onclick="showLetter()">🎉Next🎉</button>
+    </div>
+  </div>
+  <!-- Letter Page -->
+  <div class="letter-section" id="letterSection">
+    <div class="letter-box">
+      <div class="heart-decor">💖</div>
+      <h2>Dear Khushboo,</h2>
+      <p>
+1.
+ना दिल होता, ना दिल रोता,
+ना दिल दिल से जुदा होता।
+ना आप इतनी हसीं होतीं,
+ना दिल आप पर फ़िदा होता। 💖
+
+2.
+तेरी आँखों में जब भी झाँकता हूँ,
+अपनी सारी दुनिया वहाँ पाता हूँ। ❤️
+
+3.
+तेरे बिना अब जीना नहीं आता,
+तू ही मेरी मंज़िल, तू ही रास्ता। 🌸
+
+4.
+तेरी मुस्कान ही मेरी जान है,
+तेरे बिना सब कुछ सुनसान है। ✨
+
+5.
+तेरे बिना दिल को चैन कहाँ,
+तू ही मेरी खुशियों की वजह है। 💕
+
+6.
+तेरे नाम से शुरू हो मेरा दिन,
+तेरे ख्यालों पर ही हो इसका अंत। 🌹
+
+7.
+तेरे बिना सब अधूरा लगता है,
+दिल को हर लम्हा सूना लगता है। 💖
+
+8.
+तेरे बिना अधूरी है मेरी हर शाम,
+तू ही मेरी दुनिया, तू ही मेरा अरमान। 🌸
+
+
+9.
+तेरी मोहब्बत मेरी सबसे बड़ी दौलत है,
+तू ही मेरी चाहत, तू ही मेरी इबादत है। 🌹
+
+10.
+तू हँसे तो लगे मौसम सुहाना,
+तेरे बिना दिल को ना लगे जमाना। 💖
+
+11.
+तेरी धड़कन ही मेरी पहचान है,
+तेरे बिना सब कुछ वीरान है। 🌸
+
+12.
+तेरी मुस्कान मेरी जान बन जाए,
+तेरे बिना ये दिल कहाँ रह पाए। ❤️
+
+13.
+तेरे साथ हर लम्हा खास है,
+तू ही मेरी दुनिया, तू ही मेरी आस है। ✨
+
+14.
+तेरी यादों से ही मेरी रात कटती है,
+तेरी चाहत से ही मेरी सुबह सजती है। 🌹  
+
+15.
+तू पास हो तो दिल को सुकून मिलता है,
+तेरे बिना तो सब वीरान लगता है। ❤️
+
+16.
+तेरी हँसी मेरी पहचान है,
+तेरी धड़कन मेरी जान है। 🌸
+
+17.
+तू पास हो तो लगता है सब अच्छा,
+तेरे बिना सब कुछ है सच्चा कच्चा। 😍
+
+18.
+तेरे बिना मेरा क्या होगा,
+तू ही तो मेरा सपना, तू ही तो सवेरा। ✨
+
+19.
+तेरी आवाज़ में सुकून है,
+तेरे साथ ही जीने का जुनून है। 💕
+
+20.
+तेरी यादें मेरा सहारा हैं,
+तेरे बिना लम्हे भी दुश्वार हैं। 🌹
+
+21.
+तेरा साथ ही मेरी ताकत है,
+तू ही मेरी मोहब्बत की इबादत है। ❤️
+
+22.
+तेरी हर बात पर दिल फिदा है,
+तू ही मेरी दुनिया, तू ही खुदा है। 💖
+
+23.
+तेरे बिना धड़कन अधूरी है,
+तू ही मेरी ज़िंदगी की पूरी है। 🌸
+
+24.
+तेरी आँखों में खो जाना चाहता हूँ,
+तेरे दिल में बस जाना चाहता हूँ। ✨
+
+25.
+तेरे बिना कुछ अच्छा नहीं लगता,
+तेरे साथ हर पल नया लगता। 💕
+
+26.
+तेरी धड़कन मेरी रूह में बसी है,
+तेरे बिना हर खुशी अधूरी सी है। 🌹
+
+27.
+तेरे बिना हर ख्वाब अधूरा लगे,
+तेरे साथ ही दिल पूरा लगे। ❤️
+
+28.
+तेरे प्यार ने मुझे जीना सिखा दिया,
+तेरे बिना तो हर लम्हा अधूरा दिखा दिया। 💖
+
+29.
+तू ही मेरी दुनिया, तू ही मेरी चाहत है,
+तू ही मेरी धड़कन, तू ही मेरी राहत है। 🌸    
+     
+     <div class="signature">
+        हमेशा तुम्हारा,<br>
+        Akash 💙
+      </div>
+    <audio id="letterMusic" controls style="margin-top:10px; width:300px;">
+      <source src="hume.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+    </div>
+  </div>
+
+<script>
+  let step = 0;
+  const images = ["001.gif","01.gif","1.gif","2.gif","3.jpg","4.gif"];
+  let balloonInterval = null;
+  let heartInterval = null;
+
+  // Start Proposal Page
+  document.getElementById("container").style.display = "flex";
+
+  function sayYes() {
+  document.getElementById("container").style.display = "none";
+  const celebration = document.getElementById("celebration");
+  celebration.style.display = "flex";
+
+  // ✅ audio autoplay trigger
+  const music = document.getElementById("celebrationMusic");
+  music.play().catch(err => {
+    console.log("Autoplay blocked:", err);
+  });
+
+  if (!balloonInterval) balloonInterval = setInterval(() => createBalloon(celebration), 650);
+  if (!heartInterval)   heartInterval   = setInterval(() => createHeart(celebration), 1100);
+}
+
+  function showLetter() {
+  // Celebration music बंद करना
+  const music = document.getElementById("celebrationMusic");
+  if (music) {
+    music.pause();
+    music.currentTime = 0;    
+  }
+
+  // Celebration छुपाना
+  document.getElementById("celebration").style.display = "none";
+
+  // Letter section दिखाना
+  const letter = document.getElementById("letterSection"); // ✅ ensure id matches
+  letter.style.display = "flex";
+
+  // Letter music चलाना (अगर है)
+  const letterMusic = document.getElementById("letterMusic");
+  if (letterMusic) {
+    letterMusic.play().catch(err => console.log("Autoplay blocked:", err));
+  }
+}
+
+
+  function sayNo() {
+    const q = document.getElementById("question");
+    const sub = document.getElementById("sub");
+    const img = document.getElementById("stepImg");
+    const noBtn = document.getElementById("noBtn");
+    const container = document.getElementById("container");
+
+    if(step === 0){
+  q.innerText = "Please think again! 💗";
+  sub.innerHTML = `itni jaldi nahi matt bolo 😅
+    <br><br>
+    <audio controls autoplay style="margin-top:10px;">
+      <source src="LOVE.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>`;
+  img.src = images[1];
+}
+
+    else if(step === 1){
+      q.innerText = "Ek baar aur soch lo! 🥹";
+      sub.innerText = "Kyu aisa kar rahe ho 🤔";
+      img.src = images[2];
+    } 
+
+    else if(step === 2){
+      q.innerText = "Mat karo na aisa 😔";
+      sub.innerText = "Tum meri duniya ho 💖";
+      img.src = images[3];
+    } 
+
+    else if(step === 3){
+  q.innerText = "Baby Man jao na! Kitna bhav khaogi 😭";
+  sub.innerText = "Bahut glt baat hai yaar 😢";
+  img.src = images[4];
+
+  noBtn.style.position = "relative"; // ✅ absolute हटाया
+  noBtn.onmousemove = function(){
+    let maxX = 200; // ✅ box के अंदर limit
+    let maxY = 80;
+    let x = Math.floor(Math.random() * maxX);
+    let y = Math.floor(Math.random() * maxY);
+    noBtn.style.transition = "0s";
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+  };
+}
+else {
+      q.innerText = "Ab toh main pakad ke rahungi! 😼";
+      sub.innerText = "No ka option milna hi mushkil hai 🤭";
+      img.src = images[5];
+    }
+    step++;
+  }
+
+  function randomColor() {
+    const colors = ["#ff4d6d","#ffb347","#6a5acd","#00c49a","#ff69b4","#ffa07a"];
+    return colors[Math.floor(Math.random()*colors.length)];
+  }
+
+  function createBalloon(parent) {
+    const balloon = document.createElement("div");
+    balloon.className = "balloon";
+    const parentW = parent.clientWidth || window.innerWidth;
+    const left = Math.random() * (parentW - 60);
+    balloon.style.left = left + "px";
+    balloon.style.backgroundColor = randomColor();
+    const dur = 6 + Math.random()*4;
+    balloon.style.animationDuration = dur + "s";
+    balloon.style.zIndex = 8;
+    parent.appendChild(balloon);
+    setTimeout(() => balloon.remove(), (dur + 0.5) * 1000);
+  }
+
+  const heartTexts = [
+    ["I","💖","YOU"],
+    ["I","💗","YOU"], 
+  ];
+
+  function pickHeartText() {
+    return heartTexts[Math.floor(Math.random() * heartTexts.length)];
+  }
+
+  function createHeart(parent) {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    const parentW = parent.clientWidth || window.innerWidth;
+    const left = Math.random() * (parentW - 100);
+    heart.style.left = left + "px";
+    const dur = 5 + Math.random()*4;
+    heart.style.animationDuration = dur + "s";
+
+    const picked = pickHeartText();
+    const displayText = Array.isArray(picked) ? picked.join(" ") : picked;
+
+    const svg = `
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <path d="M100 180 L40 120 A40 40 0 1 1 100 60 A40 40 0 1 1 160 120 Z" fill="red"/>
+        <text x="100" y="105">${displayText}</text>
+      </svg>`;
+    heart.innerHTML = svg;
+
+    parent.appendChild(heart);
+    setTimeout(() => heart.remove(), (dur + 0.5) * 1000);
+  }
+</script>
+</body>
+</html>
+
