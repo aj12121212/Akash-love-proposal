@@ -470,9 +470,9 @@ else {
     const left = Math.random() * (parentW - 60);
     balloon.style.left = left + "px";
     balloon.style.backgroundColor = randomColor();
-    const dur = 10 + Math.random()*5;  // 10–15 seconds me float karega
-balloon.style.animationDuration = dur + "s";
-heart.style.animationDuration = dur + "s";
+    const dur = 20 + Math.random()*10;  // 10–15 seconds me float karega
+    balloon.style.animationDuration = dur + "s";
+    heart.style.animationDuration = dur + "s";
 
     balloon.style.zIndex = 8;
     parent.appendChild(balloon);
@@ -513,6 +513,7 @@ heart.style.animationDuration = dur + "s";
 </script>
 </body>
 </html>
+
 
 
 
