@@ -377,12 +377,6 @@
   const celebration = document.getElementById("celebration");
   celebration.style.display = "flex";
 
-  // ✅ audio autoplay trigger
-  const music = document.getElementById("celebrationMusic");
-  music.play().catch(err => {
-    console.log("Autoplay blocked:", err);
-  });
-
   if (!balloonInterval) balloonInterval = setInterval(() => createBalloon(celebration), 650);
   if (!heartInterval)   heartInterval   = setInterval(() => createHeart(celebration), 1100);
 }
@@ -517,4 +511,5 @@ else {
 </script>
 </body>
 </html>
+
 
