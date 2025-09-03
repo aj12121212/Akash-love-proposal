@@ -69,11 +69,12 @@
 
     /* Celebration */
     .celebration {
-      flex-direction: column;
-      background: linear-gradient(#ffedf2, #fff7fb);
-      position: relative;
-      overflow: hidden;
-    }
+  flex-direction: column;
+  background: linear-gradient(#ffedf2, #fff7fb);
+  position: relative;
+  overflow-x: hidden; /* ✅ सिर्फ horizontal छुपाओ */
+}
+
 
     .celebration .content {
       composes: box;
@@ -151,14 +152,15 @@
 
     /* Balloons */
     .balloon {
-      position: absolute;
-      bottom: -160px;
-      width: 60px;
-      height: 80px;
-      border-radius: 50%;
-      animation: floatUp linear forwards;
-      box-shadow: 0 6px 14px rgba(0,0,0,0.02);
-    }
+  position: absolute;
+  bottom: -100px;   /* ✅ mobile safe */
+  width: 60px;
+  height: 80px;
+  border-radius: 50%;
+  animation: floatUp linear forwards;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.02);
+}
+
     .balloon::after {
       content: "";
       position: absolute;
@@ -523,6 +525,7 @@ else {
 </script>
 </body>
 </html>
+
 
 
 
