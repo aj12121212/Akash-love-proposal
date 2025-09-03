@@ -102,9 +102,8 @@
   text-align: center;
   width: 90%;
   max-width: 400px;
-  margin: 20px 0;   /* thoda sa gap ek-ek box ke beech */
+  margin: 20px 0;   /* 🔥 ऊपर-नीचे बराबर gap */
 }
-
 
 /*animation: fadeIn 1.2s ease-in-out;
     //}*/
@@ -194,6 +193,15 @@
       text-anchor: middle;
       dominant-baseline: middle;
     }
+    @keyframes zoomShrink {
+  from { transform: scale(2); opacity: 0; }  /* 🔥 बड़ा */
+  to   { transform: scale(1); opacity: 1; }  /* 🔥 छोटा और visible */
+}
+
+.zoomShrink {
+  animation: zoomShrink 0.8s ease forwards;
+}
+
 
     @keyframes floatUp {
       0%   { transform: translateY(0) scale(1); opacity: 1; }
@@ -379,14 +387,23 @@
 
   function showLetter() {
   document.getElementById("celebration").style.display = "none";
-  const letter = document.getElementById("letterSection");
-  letter.style.display = "flex";   // ✅ अब इसी वक्त visible होगा
 
+  const letter = document.getElementById("letterSection");
+  letter.style.display = "flex";
+
+  // Letter-box zoomShrink effect
+  const letterBox = letter.querySelector(".letter-box");
+  letterBox.classList.remove("zoomShrink"); // reset
+  void letterBox.offsetWidth;               // reflow trick
+  letterBox.classList.add("zoomShrink");    // apply zoom
+
+  // Letter music play
   const letterMusic = document.getElementById("letterMusic");
   if (letterMusic) {
     letterMusic.play().catch(err => console.log("Autoplay blocked:", err));
   }
 }
+
 
 
 
@@ -493,5 +510,6 @@
   </script>
 </body>
 </html>
+
 
 
