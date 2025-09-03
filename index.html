@@ -464,20 +464,20 @@ else {
   }
 
   function createBalloon(parent) {
-    const balloon = document.createElement("div");
-    balloon.className = "balloon";
-    const parentW = parent.clientWidth || window.innerWidth;
-    const left = Math.random() * (parentW - 60);
-    balloon.style.left = left + "px";
-    balloon.style.backgroundColor = randomColor();
-    const dur = 10 + Math.random()*5;  // 10–15 seconds me float karega
-    balloon.style.animationDuration = dur + "s";
-  
+  const balloon = document.createElement("div");
+  balloon.className = "balloon";
+  const parentW = parent.clientWidth || window.innerWidth;
+  const left = Math.random() * (parentW - 60);
+  balloon.style.left = left + "px";
+  balloon.style.backgroundColor = randomColor();
+  const dur = 10 + Math.random() * 5; // 10–15 seconds me float karega
+  balloon.style.animationDuration = dur + "s";
 
-    balloon.style.zIndex = 8;
-    parent.appendChild(balloon);
-    setTimeout(() => balloon.remove(), (dur + 0.5) * 1000);
-  }
+  balloon.style.zIndex = 8;
+  parent.appendChild(balloon);
+  setTimeout(() => balloon.remove(), (dur + 0.5) * 1000);
+}
+
 
   const heartTexts = [
     ["I","💖","YOU"],
@@ -513,6 +513,7 @@ else {
 </script>
 </body>
 </html>
+
 
 
 
