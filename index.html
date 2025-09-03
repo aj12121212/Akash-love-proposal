@@ -81,16 +81,19 @@
 
     /* Letter Section */
     .letter-section {
-      background: linear-gradient(120deg, #ffdde1, #ee9ca7);
-      padding: 20px;
-      overflow-y: auto;
-      display: none;              /* ✅ center fix */
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-    }
+  display: none;
+  background: linear-gradient(120deg, #ffdde1, #ee9ca7);
+  padding: 20px;
+  overflow-y: auto;
 
-    .letter-box {
+  /* yaha change kiya */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* ab top se start hoga */
+  align-items: center;
+}
+
+.letter-box {
   background: white;
   padding: 20px;
   border-radius: 20px;
@@ -99,13 +102,10 @@
   width: 90%;
   max-width: 400px;
 
-  /* ये नया जोड़ा गया */
-  margin: 40px 0;       /* Top aur bottom se gap */
-  max-height: calc(100vh - 80px); /* upar-niche margin ke liye adjust */
-  overflow-y: auto;     /* agar text zyada ho to scroll aa jaye */
+  margin-top: 40px;   /* top se niche */
+  margin-bottom: 40px; /* bottom se niche */
 }
-
-      //animation: fadeIn 1.2s ease-in-out;
+//animation: fadeIn 1.2s ease-in-out;
     //}
 
     .letter-box h2 {
@@ -492,5 +492,6 @@
   </script>
 </body>
 </html>
+
 
 
