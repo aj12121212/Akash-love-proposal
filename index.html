@@ -82,16 +82,15 @@
     /* Letter Section */
     .letter-section {
   background: linear-gradient(120deg, #ffdde1, #ee9ca7);
-  padding: 20px;
-  overflow-y: auto;
+  padding: 40px 20px;     /* 🔥 top aur bottom dono taraf gap */
+  overflow-y: auto;       /* content scrollable */
   flex-direction: column;
-  justify-content: center;   /* 🔥 vertical center */
-  align-items: center;       /* 🔥 horizontal center */
+  justify-content: flex-start; /* 🔥 ab content top se start hoga */
+  align-items: center;
   display: none;
-  height: 100vh;             /* 🔥 full screen cover kare */
-  box-sizing: border-box;    /* padding ke sath calculation sahi ho */
+  min-height: 100vh;      /* poore screen cover karega */
+  box-sizing: border-box;
 }
-
 
 
 .letter-box {
@@ -103,8 +102,9 @@
   text-align: center;
   width: 90%;
   max-width: 400px;
-  margin: 20px 0;   /* ✅ thoda breathing space top-bottom */
+  margin: 20px 0;   /* thoda sa gap ek-ek box ke beech */
 }
+
 
 /*animation: fadeIn 1.2s ease-in-out;
     //}*/
@@ -493,4 +493,5 @@
   </script>
 </body>
 </html>
+
 
