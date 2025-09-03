@@ -81,16 +81,15 @@
 
     /* Letter Section */
     .letter-section {
-  background: linear-gradient(120deg, #ffdde1, #ee9ca7);   
-  padding: 40px 20px;       /* 👈 Top & Bottom gap add */
-  min-height: 100vh;        /* 👈 Full screen cover */
-  box-sizing: border-box;
-  
+  background: linear-gradient(120deg, #ffdde1, #ee9ca7);
+  padding: 20px;
   overflow-y: auto;
-  display: flex;
-  justify-content: center;  /* 👈 Center vertically */
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
+  display: none;
 }
+
 
 .letter-box {
   position: relative;
@@ -101,8 +100,9 @@
   text-align: center;
   width: 90%;
   max-width: 400px;
+  margin-top: 40px;   /* top se niche */
+  margin-bottom: 40px; /* bottom se niche */
 }
-
 /*animation: fadeIn 1.2s ease-in-out;
     //}*/
 
@@ -369,30 +369,21 @@
       document.getElementById("container").style.display = "none";
       const celebration = document.getElementById("celebration");
       celebration.style.display = "flex";
-      showSection("celebration");
+
       if (!balloonInterval) balloonInterval = setInterval(() => createBalloon(celebration), 650);
       if (!heartInterval)   heartInterval   = setInterval(() => createHeart(celebration), 1100);
     }
 
   function showLetter() {
   document.getElementById("celebration").style.display = "none";
-  document.getElementById("container").style.display = "none";  // 👈 add this line
   const letter = document.getElementById("letterSection");
-  letter.style.display = "flex";   // ✅ ab sirf yeh visible hoga
-  showSection("letterSection);
+  letter.style.display = "flex";   // ✅ अब इसी वक्त visible होगा
+
   const letterMusic = document.getElementById("letterMusic");
   if (letterMusic) {
     letterMusic.play().catch(err => console.log("Autoplay blocked:", err));
   }
 }
- function showSection(id) {
-  document.getElementById("container").style.display = "none";
-  document.getElementById("celebration").style.display = "none";
-  document.getElementById("letterSection").style.display = "none";
-
-  document.getElementById(id).style.display = "flex";
-}
-
 
 
 
@@ -499,19 +490,3 @@
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
