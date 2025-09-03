@@ -84,7 +84,7 @@
       background: linear-gradient(120deg, #ffdde1, #ee9ca7);
       padding: 20px;
       overflow-y: auto;
-      display: flex;              /* ✅ center fix */
+      display: none;              /* ✅ center fix */
       justify-content: center;
       align-items: center;
       flex-direction: column;
@@ -369,16 +369,17 @@
       if (!heartInterval)   heartInterval   = setInterval(() => createHeart(celebration), 1100);
     }
 
-    function showLetter() {
-      document.getElementById("celebration").style.display = "none";
-      const letter = document.getElementById("letterSection");
-      letter.style.display = "flex";
+   function showLetter() {
+  document.getElementById("celebration").style.display = "none";
+  const letter = document.getElementById("letterSection");
+  letter.style.display = "flex";   // ✅ yaha pe hi flex hoga
 
-      const letterMusic = document.getElementById("letterMusic");
-      if (letterMusic) {
-        letterMusic.play().catch(err => console.log("Autoplay blocked:", err));
-      }
-    }
+  const letterMusic = document.getElementById("letterMusic");
+  if (letterMusic) {
+    letterMusic.play().catch(err => console.log("Autoplay blocked:", err));
+  }
+}
+
 
     function sayNo() {
       const q = document.getElementById("question");
