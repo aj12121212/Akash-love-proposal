@@ -85,10 +85,13 @@
   padding: 20px;
   overflow-y: auto;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
+  justify-content: center;   /* 🔥 vertical center */
+  align-items: center;       /* 🔥 horizontal center */
   display: none;
+  height: 100vh;             /* 🔥 full screen cover kare */
+  box-sizing: border-box;    /* padding ke sath calculation sahi ho */
 }
+
 
 
 .letter-box {
@@ -100,9 +103,9 @@
   text-align: center;
   width: 90%;
   max-width: 400px;
-  margin-top: 40px;   /* top se niche */
-  margin-bottom: 40px; /* bottom se niche */
+  margin: 20px 0;   /* ✅ thoda breathing space top-bottom */
 }
+
 /*animation: fadeIn 1.2s ease-in-out;
     //}*/
 
@@ -490,3 +493,4 @@
   </script>
 </body>
 </html>
+
