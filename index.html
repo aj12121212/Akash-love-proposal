@@ -360,7 +360,7 @@
       <div class="signature">
         हमेशा तुम्हारा,<br>Akash 💙
       </div>
-      <audio id="letterMusic" controls style="margin-top:10px; width:300px;">
+     <audio id="letterMusic" src="hume.mp3">
   <source src="hume.mp3" type="audio/mpeg">
   Your browser does not support the audio element.
 </audio>
@@ -392,29 +392,21 @@
   const letter = document.getElementById("letterSection");
   letter.style.display = "flex";
 
-  // Letter-box zoomShrink effect
+  // ZoomShrink effect
   const letterBox = letter.querySelector(".letter-box");
   letterBox.classList.remove("zoomShrink");
   void letterBox.offsetWidth; // reflow
   letterBox.classList.add("zoomShrink");
 
-  // Letter music play
+  // Play music safely
   const letterMusic = document.getElementById("letterMusic");
   if (letterMusic) {
-    letterMusic.muted = false;         // 🔹 ensure not muted
-    const playPromise = letterMusic.play();
-    if (playPromise !== undefined) {
-      playPromise.then(_ => {
-        console.log("Music playing...");
-      }).catch(error => {
-        console.log("Autoplay blocked. Try user interaction.", error);
-      });
-    }
+    letterMusic.muted = false;  // ensure not muted
+    letterMusic.play().catch(err => {
+      console.log("Audio play failed: ", err);
+    });
   }
 }
-
-
-
 
     function sayNo() {
       const q = document.getElementById("question");
@@ -518,6 +510,7 @@
   </script>
 </body>
 </html>
+
 
 
 
