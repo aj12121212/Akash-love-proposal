@@ -85,10 +85,15 @@
 
     /* Letter Section */
     .letter-section {
-      background: linear-gradient(120deg, #ffdde1, #ee9ca7);
-      padding: 20px;
-      overflow-y: auto;
-    }
+  background: linear-gradient(120deg, #ffdde1, #ee9ca7);
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;              /* ✅ add */
+  justify-content: center;    /* ✅ horizontally center */
+  align-items: center;        /* ✅ vertically center */
+  flex-direction: column;     /* ✅ so box stacks nicely */
+}
+
 
     .letter-box {
         background: #fff;
@@ -103,7 +108,6 @@
     }
      
     .letter-box {
-        position: relative;
         top: 45px;
         margin-bottom: 90px; 
    }
@@ -525,6 +529,7 @@ else {
 </script>
 </body>
 </html>
+
 
 
 
