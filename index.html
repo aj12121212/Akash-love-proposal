@@ -361,9 +361,10 @@
         हमेशा तुम्हारा,<br>Akash 💙
       </div>
       <audio id="letterMusic" controls style="margin-top:10px; width:300px;">
-        <source src="hume.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-      </audio>
+  <source src="hume.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
     </div>
   </div>
 
@@ -385,7 +386,7 @@
       if (!heartInterval)   heartInterval   = setInterval(() => createHeart(celebration), 1100);
     }
 
-  function showLetter() {
+ function showLetter() {
   document.getElementById("celebration").style.display = "none";
 
   const letter = document.getElementById("letterSection");
@@ -393,14 +394,22 @@
 
   // Letter-box zoomShrink effect
   const letterBox = letter.querySelector(".letter-box");
-  letterBox.classList.remove("zoomShrink"); // reset
-  void letterBox.offsetWidth;               // reflow trick
-  letterBox.classList.add("zoomShrink");    // apply zoom
+  letterBox.classList.remove("zoomShrink");
+  void letterBox.offsetWidth; // reflow
+  letterBox.classList.add("zoomShrink");
 
   // Letter music play
   const letterMusic = document.getElementById("letterMusic");
   if (letterMusic) {
-    letterMusic.play().catch(err => console.log("Autoplay blocked:", err));
+    letterMusic.muted = false;         // 🔹 ensure not muted
+    const playPromise = letterMusic.play();
+    if (playPromise !== undefined) {
+      playPromise.then(_ => {
+        console.log("Music playing...");
+      }).catch(error => {
+        console.log("Autoplay blocked. Try user interaction.", error);
+      });
+    }
   }
 }
 
@@ -419,7 +428,6 @@
           <br><br>
           <audio controls autoplay style="margin-top:10px;">
             <source src="LOVE.mp3" type="audio/mpeg">
-            Your browser does not support the audio element.
           </audio>`;
         img.src = images[1];
       }
@@ -510,6 +518,7 @@
   </script>
 </body>
 </html>
+
 
 
 
