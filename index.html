@@ -466,17 +466,27 @@ else {
   function createBalloon(parent) {
   const balloon = document.createElement("div");
   balloon.className = "balloon";
+
+  // Random left position
   const parentW = parent.clientWidth || window.innerWidth;
   const left = Math.random() * (parentW - 60);
   balloon.style.left = left + "px";
+
+  // Random color
   balloon.style.backgroundColor = randomColor();
-  const dur = 10 + Math.random() * 5; // 10–15 seconds me float karega
+
+  // Random speed
+  const dur = 10 + Math.random() * 5; // 10–15 seconds
   balloon.style.animationDuration = dur + "s";
 
   balloon.style.zIndex = 8;
+
   parent.appendChild(balloon);
+
+  // Remove balloon after animation ends
   setTimeout(() => balloon.remove(), (dur + 0.5) * 1000);
 }
+
 
 
   const heartTexts = [
@@ -513,6 +523,7 @@ else {
 </script>
 </body>
 </html>
+
 
 
 
