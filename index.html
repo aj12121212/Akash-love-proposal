@@ -369,21 +369,30 @@
       document.getElementById("container").style.display = "none";
       const celebration = document.getElementById("celebration");
       celebration.style.display = "flex";
-
+      showSection("celebration");
       if (!balloonInterval) balloonInterval = setInterval(() => createBalloon(celebration), 650);
       if (!heartInterval)   heartInterval   = setInterval(() => createHeart(celebration), 1100);
     }
 
   function showLetter() {
   document.getElementById("celebration").style.display = "none";
+  document.getElementById("container").style.display = "none";  // 👈 add this line
   const letter = document.getElementById("letterSection");
-  letter.style.display = "flex";   // ✅ अब इसी वक्त visible होगा
-
+  letter.style.display = "flex";   // ✅ ab sirf yeh visible hoga
+  showSection("letterSection);
   const letterMusic = document.getElementById("letterMusic");
   if (letterMusic) {
     letterMusic.play().catch(err => console.log("Autoplay blocked:", err));
   }
 }
+ function showSection(id) {
+  document.getElementById("container").style.display = "none";
+  document.getElementById("celebration").style.display = "none";
+  document.getElementById("letterSection").style.display = "none";
+
+  document.getElementById(id).style.display = "flex";
+}
+
 
 
 
@@ -490,6 +499,7 @@
   </script>
 </body>
 </html>
+
 
 
 
