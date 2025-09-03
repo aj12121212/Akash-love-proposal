@@ -91,15 +91,22 @@
     }
 
     .letter-box {
-      background: #fff;
-      padding: 40px;
-      border-radius: 25px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.25);
-      width: 320px;
-      max-width: 95%;
-      text-align: center;
-      animation: fadeIn 1.2s ease-in-out;
-    }
+  background: white;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+
+  /* ये नया जोड़ा गया */
+  margin: 40px 0;       /* Top aur bottom se gap */
+  max-height: calc(100vh - 80px); /* upar-niche margin ke liye adjust */
+  overflow-y: auto;     /* agar text zyada ho to scroll aa jaye */
+}
+
+      //animation: fadeIn 1.2s ease-in-out;
+    //}
 
     .letter-box h2 {
       text-align: center;
@@ -485,4 +492,5 @@
   </script>
 </body>
 </html>
+
 
