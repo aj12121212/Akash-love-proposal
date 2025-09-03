@@ -369,16 +369,17 @@
       if (!heartInterval)   heartInterval   = setInterval(() => createHeart(celebration), 1100);
     }
 
-   function showLetter() {
+  function showLetter() {
   document.getElementById("celebration").style.display = "none";
   const letter = document.getElementById("letterSection");
-  letter.style.display = "flex";   // ✅ yaha pe hi flex hoga
+  letter.style.display = "flex";   // ✅ अब इसी वक्त visible होगा
 
   const letterMusic = document.getElementById("letterMusic");
   if (letterMusic) {
     letterMusic.play().catch(err => console.log("Autoplay blocked:", err));
   }
 }
+
 
 
     function sayNo() {
@@ -484,3 +485,4 @@
   </script>
 </body>
 </html>
+
